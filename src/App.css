@@ -1,0 +1,296 @@
+:root {
+    --color-black:#000000;
+    --color_white: #fff;
+    --color_green: seagreen;
+    --color_yellow: darkgoldenrod;
+    --color_red: brown;
+    --primary_borderRadius: 0.25rem;
+ }
+ 
+ /* * global styles * */
+ * {
+    padding: 0;
+    margin: 0;
+ }
+ body {
+    background-color: var(--color_white);
+    color: rgb(255, 255, 255);
+ }
+ /* * text 'blur & line-through' in list completed & deleted * */
+ .list:hover > .toDos .todo .top .text.text_blurLine {
+    text-decoration: none;
+ }
+ .list .toDos .todo:hover > .top .text.text_blurLine {
+    filter: none;
+ }
+ 
+ .tick {
+    color: var(--color_green);
+ }
+ .close {
+    color: var(--color_red);
+ }
+ .retrieve {
+    color: rgb(46, 75, 164);
+ }
+ .trash {
+    color: rgb(69, 69, 69);
+ }
+ .clock {
+    color: var(--color_yellow);
+ }
+ .arrow {
+    color: var(--color_black);
+ }
+ 
+ /* ** Headings ** */
+ .headings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+ }
+ .headings .mainHeading {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgb(255, 255, 255);
+ }
+ .headings .mainHeading h1 {
+    font-size: 3rem;
+    font-family: "Macondo", cursive;
+ }
+ .headings .subHeading {
+    text-align: center;
+ }
+ .headings .subHeading h2 {
+    font-size: 2rem;
+    font-family: "Shalimar", cursive;
+ }
+ 
+ /* ** ToDo Input ** */
+ .inputForm {
+    width: 30%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 2px 1px rgb(255, 255, 255);
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: var(--primary_borderRadius);
+    padding: 2px 0;
+    display: flex;
+ }
+ .inputForm .input {
+    width: 100%;
+    padding: 1px 8px 0 2px;
+ }
+ .inputForm .input textarea {
+    width: 100%;
+    font-family: "Architects Daughter", cursive;
+    resize: vertical;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: var(--primary_borderRadius);
+    padding: 2px;
+    padding-left: 3px;
+    min-height: 4.5rem;
+    margin-bottom: -4px;
+ }
+ .inputForm .input-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 5px;
+ }
+ .inputForm .input-btns > * {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin: 8px 0;
+    cursor: pointer;
+ }
+ .inputForm .input-btns > * :hover {
+    color: rgb(85, 85, 85);
+ }
+ .inputForm .input-btns > * i {
+    font-size: 1.4rem;
+ }
+ 
+ /* ** List container ** */
+ .list {
+    height: 100%;
+    width: 30%;
+    float: left;
+    margin: 1.5rem 0;
+    margin-left: 2.5%;
+    padding: 1rem 0;
+    border-radius: var(--primary_borderRadius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .list.completed {
+    background-color: var(--color_black);
+    border: 1px solid var(--color-black);
+ }
+ .list.allTask {
+   background-color: var(--color_black);
+   border: 1px solid var(--color-black);
+ }
+ .list.deleted {
+   background-color: var(--color_black);
+   border: 1px solid var(--color-black);
+ }
+ .list .heading {
+    color: black;
+    font-family: "Architects Daughter", cursive;
+    cursor: default;
+ }
+ .list .toDos {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+ }
+ .list .toDos .todo {
+    width: 92%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.18);
+    margin-top: 0.5rem;
+    padding: 5px;
+    border-radius: var(--primary_borderRadius);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+       "todo-left todo-top todo-right"
+       "todo-left todo-bottom todo-right";
+    transition: transform 400ms;
+ }
+ .list .toDos .todo:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scaleX(1.03);
+ }
+ .list .toDos .todo .left,
+ .list .toDos .todo .right {
+    width: 25px;
+ }
+ .list .toDos .todo .top,
+ .list .toDos .todo .bottom {
+    padding: 0 2px;
+    min-width: 0;
+ }
+ .list .toDos .todo .left {
+    grid-area: todo-left;
+ }
+ .list .toDos .todo .top {
+    grid-area: todo-top;
+ }
+ .list .toDos .todo .bottom {
+    grid-area: todo-bottom;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2px;
+ }
+ .list .toDos .todo .right {
+    grid-area: todo-right;
+ }
+ .list .toDos .todo > * .icon {
+    width: inherit;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+ }
+ .list .toDos .todo .left .icon.retrieve {
+    transform: scale(-1, 1);
+ }
+ .list .toDos .todo .top .text {
+    color: black;
+    text-align: justify;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    font-family: "Architects Daughter", cursive;
+ }
+ .list .toDos .todo .bottom > * {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    font-family: "Stylish", sans-serif;
+ }
+ 
+ /* * Bottom NavBar (mobile) * */
+ .bottomNav {
+    display: none;
+    background-color: var(--color_black);
+    width: 100%;
+    height: 3.2rem;
+    box-shadow: 0 0 2px 2px var(--color_black);
+    position: fixed;
+    bottom: 0;
+ }
+ .bottomNav > * {
+    margin: 6px 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1.5rem;
+ }
+ .bottomNav > :first-child {
+    margin-left: 20px;
+ }
+ .bottomNav > :last-child {
+    margin-right: 20px;
+ }
+ .bottomNav .nav_on {
+    background-color: rgba(255, 255, 255, 0.1);
+ }
+ .bottomNav > * .icon {
+    font-size: 1.5rem;
+ }
+ .bottomNav > * .icon_sm {
+    font-size: 0.7rem;
+ }
+ .bottomNav > * .hidden_icon {
+    color: transparent;
+ }
+ 
+ /* * media queries * */
+ @media only screen and (max-width: 1080px) {
+    .inputForm {
+       width: 55%;
+    }
+ }
+ @media only screen and (max-width: 840px) {
+    .inputForm {
+       width: 65%;
+    }
+ }
+ @media only screen and (max-width: 600px) {
+    /* * mobile * */
+    .text_blurLine {
+       text-decoration: none;
+    }
+    .inputForm {
+       width: 95%;
+    }
+    .list {
+       width: 95%;
+       margin-bottom: 4.5rem;
+    }
+    .list.completed,
+    .list.allTask,
+    .list.deleted {
+       display: none;
+    }
+    .bottomNav {
+       display: flex;
+    }
+ }
+ 
